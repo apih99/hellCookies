@@ -75,26 +75,13 @@ class CookieBannerHell {
     }
     
     init() {
-        // Debug: Check if elements exist
-        console.log('Cookie Hell initialized!');
-        console.log('Container element:', this.container);
-        console.log('Overlay element:', this.overlay);
-        
-        // Add immediate visual feedback that script is working
-        if (this.container) {
-            this.container.innerHTML = '<div style="position:fixed; top:10px; right:10px; background:green; color:white; padding:5px; border-radius:3px; z-index:9999; font-size:12px;">Cookie Hell Loading...</div>';
-        }
-        
         // Start the madness after a short delay
         setTimeout(() => {
-            console.log('Starting first banner...');
             this.showNextBanner();
         }, 2000);
     }
     
     showNextBanner() {
-        console.log('showNextBanner called, currentLevel:', this.currentLevel);
-        
         if (this.currentLevel >= this.maxLevel) {
             this.showVictoryMessage();
             return;
@@ -104,13 +91,6 @@ class CookieBannerHell {
         const bannerLevel = Math.min(this.currentLevel, this.bannerData.length);
         const bannerInfo = this.bannerData[bannerLevel - 1];
         
-        console.log('Creating banner level:', bannerLevel, 'with info:', bannerInfo);
-        
-        // Clear loading message
-        if (this.currentLevel === 1) {
-            this.container.innerHTML = '';
-        }
-        
         // Show overlay for levels 2+
         if (this.currentLevel > 1) {
             this.overlay.classList.add('show');
@@ -118,15 +98,12 @@ class CookieBannerHell {
         
         // Create banner element
         const banner = this.createBanner(bannerInfo, bannerLevel);
-        console.log('Banner created:', banner);
-        
         this.container.appendChild(banner);
         this.activeBanners.push(banner);
         
         // Show banner with animation
         setTimeout(() => {
             banner.classList.add('show');
-            console.log('Banner should now be visible');
         }, 100);
         
         // Add special effects for certain levels
@@ -342,49 +319,7 @@ class CookieBannerHell {
 let cookieHell;
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded, initializing Cookie Hell...');
-    try {
-        cookieHell = new CookieBannerHell();
-        console.log('Cookie Hell instance created:', cookieHell);
-    } catch (error) {
-        console.error('Error creating Cookie Hell:', error);
-    }
-});
-
-// Backup initialization in case DOMContentLoaded already fired
-if (document.readyState === 'loading') {
-    // Still loading, DOMContentLoaded will fire
-} else {
-    // DOM already loaded
-    console.log('DOM already loaded, initializing immediately...');
-    setTimeout(() => {
-        if (!cookieHell) {
-            try {
-                cookieHell = new CookieBannerHell();
-                console.log('Backup Cookie Hell instance created:', cookieHell);
-            } catch (error) {
-                console.error('Error in backup initialization:', error);
-            }
-        }
-    }, 100);
-}
-
-// Additional GitHub Pages compatibility check
-window.addEventListener('load', function() {
-    console.log('Window load event fired');
-    setTimeout(() => {
-        if (!cookieHell) {
-            console.log('Final attempt to initialize Cookie Hell...');
-            try {
-                cookieHell = new CookieBannerHell();
-                console.log('Final Cookie Hell instance created:', cookieHell);
-            } catch (error) {
-                console.error('Error in final initialization:', error);
-            }
-        } else {
-            console.log('Cookie Hell already exists:', cookieHell);
-        }
-    }, 500);
+    cookieHell = new CookieBannerHell();
 });
 
 // Keyboard shortcuts for testing
