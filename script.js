@@ -369,6 +369,24 @@ if (document.readyState === 'loading') {
     }, 100);
 }
 
+// Additional GitHub Pages compatibility check
+window.addEventListener('load', function() {
+    console.log('Window load event fired');
+    setTimeout(() => {
+        if (!cookieHell) {
+            console.log('Final attempt to initialize Cookie Hell...');
+            try {
+                cookieHell = new CookieBannerHell();
+                console.log('Final Cookie Hell instance created:', cookieHell);
+            } catch (error) {
+                console.error('Error in final initialization:', error);
+            }
+        } else {
+            console.log('Cookie Hell already exists:', cookieHell);
+        }
+    }, 500);
+});
+
 // Keyboard shortcuts for testing
 document.addEventListener('keydown', function(e) {
     // Press 'R' to reset
