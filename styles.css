@@ -1,0 +1,434 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header and Navigation */
+header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6rem 5%;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    background: #c0392b;
+}
+
+/* Features Section */
+.features {
+    padding: 4rem 5%;
+    background: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Cookie Banner Overlay */
+.cookie-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cookie-overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Base Cookie Banner Styles */
+.cookie-banner {
+    position: fixed;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding: 2rem;
+    max-width: 500px;
+    transform: scale(0.8) translateY(50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.cookie-banner.show {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.cookie-banner h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.cookie-banner p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.cookie-banner-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.cookie-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cookie-btn-accept {
+    background: #27ae60;
+    color: white;
+}
+
+.cookie-btn-accept:hover {
+    background: #219a52;
+}
+
+.cookie-btn-decline {
+    background: #95a5a6;
+    color: white;
+}
+
+.cookie-btn-decline:hover {
+    background: #7f8c8d;
+}
+
+/* Level 1: Normal Cookie Banner */
+.cookie-banner-1 {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+}
+
+/* Level 2: Corporate Speak */
+.cookie-banner-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.cookie-banner-2.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Level 3: Suspicious Banner */
+.cookie-banner-3 {
+    top: 20px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    border: 3px solid #c0392b;
+    animation: suspicious-shake 0.5s infinite;
+}
+
+@keyframes suspicious-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Level 4: Comic Sans Madness */
+.cookie-banner-4 {
+    top: 50%;
+    left: 20px;
+    background: #ff6b6b;
+    color: #fff;
+    font-family: 'Comic Sans MS', cursive;
+    border: 5px dashed #ff5252;
+    transform: rotate(-5deg) scale(0.8);
+}
+
+.cookie-banner-4.show {
+    transform: rotate(-5deg) scale(1);
+}
+
+/* Level 5: Rainbow Chaos */
+.cookie-banner-5 {
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    background-size: 300% 300%;
+    animation: rainbow-move 2s ease infinite;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    border: 3px solid gold;
+}
+
+.cookie-banner-5.show {
+    transform: translateX(-50%) scale(1);
+}
+
+@keyframes rainbow-move {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Level 6: Matrix Style */
+.cookie-banner-6 {
+    bottom: 100px;
+    right: 20px;
+    background: #000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    border: 2px solid #00ff00;
+    animation: matrix-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes matrix-glow {
+    from { box-shadow: 0 0 5px #00ff00; }
+    to { box-shadow: 0 0 20px #00ff00; }
+}
+
+/* Level 7: Old Windows Error */
+.cookie-banner-7 {
+    top: 30%;
+    left: 30%;
+    background: #c0c0c0;
+    color: #000;
+    font-family: 'MS Sans Serif', sans-serif;
+    border: 2px outset #c0c0c0;
+    font-size: 12px;
+}
+
+.cookie-banner-7 h3 {
+    background: #000080;
+    color: white;
+    margin: -2rem -2rem 1rem -2rem;
+    padding: 0.5rem;
+    font-size: 14px;
+}
+
+/* Level 8: Glitch Effect */
+.cookie-banner-8 {
+    top: 10%;
+    right: 30%;
+    background: #ff0080;
+    color: white;
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Level 9: Spinning Madness */
+.cookie-banner-9 {
+    top: 60%;
+    right: 40%;
+    background: #8e44ad;
+    color: white;
+    animation: spin-crazy 2s linear infinite;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes spin-crazy {
+    from { transform: rotate(0deg) scale(0.8); }
+    to { transform: rotate(360deg) scale(1.2); }
+}
+
+/* Level 10: Final Boss */
+.cookie-banner-10 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    border-radius: 0;
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    background-size: 400% 400%;
+    animation: rainbow-chaos 1s ease infinite, shake-violently 0.1s infinite;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@keyframes rainbow-chaos {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shake-violently {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    10% { transform: translate(-2px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .cookie-banner {
+        max-width: 90%;
+        margin: 0 5%;
+    }
+    
+    .hero {
+        padding: 4rem 5%;
+    }
+} 
